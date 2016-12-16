@@ -1,0 +1,98 @@
+
+.align-center{
+    text-align: center;
+}
+/*宽度 高度*/
+.w-120{width: 120px}
+.w-200{width: 200px}
+.minw-150{min-width: 150px}
+.minw-200{min-width: 200px}
+.maxw-200{max-width: 200px}
+.minh-200{min-height: 200px}
+.h-72{height: 72px}
+.h-120{height: 120px}
+.h-150{height: 150px}
+.h-180{height: 180px}
+.h-200{height: 200px}
+.h-250{height: 250px}
+
+.w-16X{width: 16%}
+.w-84X{width: 84%}
+
+.float-l{  float: left;  }
+.float-r{  float: right;  }
+
+.pad-5{  padding: 5px;  }
+.pad-10{  padding: 10px;  }
+.padtb-5{  padding: 5px 0px;  }
+.padtb-10{  padding: 10px 0px;  }
+
+.color-red{color: red;}
+.color-darkgreen{color: darkgreen;}
+.color-mediumseagreen{color: mediumseagreen;}
+
+
+.border-common{
+    border: 1px solid #e1e1e8;
+}
+
+.bg-white{
+    background: white;
+}
+
+.border{
+    border-bottom: 1px solid;
+}
+
+.margin-5px{  margin: 5px;  }
+.margint-5px{ margin-top: 5px; }
+.margint-20{ margin-top: 20px; }
+.margint--30px{ margin-top: -30px; }
+
+.margin-bt{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.float-r{  float: right;  }
+
+h4 {
+    margin-top: 25px;
+}
+.row {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.volume [class*="col-"] {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #eee;
+    /*background-color: rgba(86,61,124,.15);*/
+    border: 1px solid #ddd;
+    border: 1px solid rgba(86,61,124,.2);
+}
+
+.font-14{
+    font-size: 14px;
+}
+
+hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.query_area label{
+    display: inline-block;
+    max-width: 100%;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.big_show{
+    overflow-x: hidden;
+}
+
+.index_9999{
+    z-index: 9999;
+}

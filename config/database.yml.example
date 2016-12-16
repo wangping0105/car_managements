@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: root
+
+development:
+  <<: *default
+  database: wangdai_dev
+
+test:
+  <<: *default
+  database: wangdai_test
+
+production:
+  <<: *default
+  database: wangdai_production

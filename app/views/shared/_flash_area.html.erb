@@ -1,0 +1,9 @@
+<nav class="navbar index_9999">
+  <div id= "notice">
+    <% flash.each do |key, value| %>
+        <div class="flash alert-warning <%= key %>">
+          <%= value %>
+        </div>
+    <% end %>
+  </div>
+</nav>

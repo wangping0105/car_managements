@@ -1,0 +1,19 @@
+zh-CN:
+  activerecord:
+    models:
+      user: "用户"
+    attributes:
+      user:
+        id: "ID"
+        name: "名称"
+        email: "邮箱"
+  enums:
+    user:
+      role:
+        nomal: "普通用户"
+        store_admin: "门店管理员"
+        super_admin: "超级管理员"
+      sex:
+        famale: 女
+        male: 男
+        other: 其他

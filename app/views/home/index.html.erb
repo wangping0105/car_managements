@@ -1,0 +1,6 @@
+<h1>Home#index</h1>
+<%= form_tag("/home", :method => "get") do %>
+  <%= label_tag(:q, "查找") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>

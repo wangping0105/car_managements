@@ -1,0 +1,29 @@
+*~
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+
+# Ignore all logfiles and tempfiles.
+/log
+!/log/.keep
+/tmp
+/.idea
+/config/*.yml
+/test
+public/system
+public/api_doc/
+public/assets/
+
+#config/database.yml
+#config/chewy.yml
+config/secrets.yml
+config/nginx.conf
+config/unicorn/*.rb
+#config/logrotate.conf
+#config/newrelic.yml
+#config/app.god
