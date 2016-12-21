@@ -14,3 +14,17 @@
  *= require_tree .
  *= require_self
  */
+
+.faye_msg{
+    position: fixed;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin div{
+    margin-bottom: 10px;
+}

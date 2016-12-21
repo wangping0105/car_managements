@@ -13,8 +13,8 @@ zh-CN:
       locked: "Your account is locked."
       last_attempt: "You have one more attempt before your account is locked."
       not_found_in_database: "Invalid %{authentication_keys} or password."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "请先登录."
+      timeout: "您的登录已经过期,汽车哦格式"
+      unauthenticated: "您还未登录,请先登录."
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:

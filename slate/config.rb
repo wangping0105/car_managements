@@ -1,4 +1,4 @@
-set :build_dir, "../public/api_chekoubei_doc"
+set :build_dir, "../public/api_doc"
 # Markdown
 set :markdown_engine, :redcarpet
 set :markdown,

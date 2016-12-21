@@ -3,7 +3,7 @@
 ## show_user
 ### HTTP Request
 
-`Get /api/v1/users/users/:id`
+`Get /api/v1/users/:id`
 
 ### URL Parameters
 
@@ -34,7 +34,7 @@ user_id | false | user's id, replace :id in 'HTTP Request'
 ## 更新用户
 ### HTTP Request
 
-`PUT /api/v1/users/users/:id`
+`PUT /api/v1/users/:id`
 
 ### URL Parameters
 

@@ -2,7 +2,7 @@
 ## 登录
 ### HTTP Request
 
-`POST  /api/v1/users/auth/login`
+`POST  /api/v1/auth/login`
 
 ### URL Parameters
 
@@ -40,7 +40,7 @@ password | true | mi码
 ## 手机验证码发送
 ### HTTP Request
 
-`GET  /api/v1/users/auth/send_verification_code`
+`GET  /api/v1/auth/send_verification_code`
 
 ### URL Parameters
 
@@ -61,7 +61,7 @@ phone | true | 电话
 ## 注册
 ### HTTP Request
 
-`POST  /api/v1/users/auth/sign_up`
+`POST  /api/v1/auth/sign_up`
 
 ### URL Parameters
 
@@ -92,7 +92,7 @@ password | true | mi码
 ## 修改密码
 ### HTTP Request
 
-`PUT  /api/v1/users/auth/change_password`
+`PUT  /api/v1/auth/change_password`
 
 ### URL Parameters
 

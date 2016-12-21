@@ -10,6 +10,8 @@
 <body>
 <%= render 'shared/flash_area' %>
 <%= yield %>
-
+<% if content_for?(:js_in_footer)%>
+  <%= yield(:js_in_footer) %>
+<%end %>
 </body>
 </html>

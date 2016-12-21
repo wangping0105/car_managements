@@ -5,3 +5,12 @@
     background-color: #f2dede;
     border-color: #ebccd1;
 }
+
+.alert_msg {
+    width: 300px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 9999;
+    padding: 10px;
+}

@@ -11,8 +11,7 @@ zh-CN:
     user:
       role:
         nomal: "普通用户"
-        store_admin: "门店管理员"
-        super_admin: "超级管理员"
+        admin: "超级管理员"
       sex:
         famale: 女
         male: 男
