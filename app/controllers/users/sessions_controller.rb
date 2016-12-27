@@ -12,7 +12,8 @@ class Users::SessionsController < Devise::SessionsController
   def create
     @user = User.find_by(phone: user_params[:phone])
 
-    if @user && sign_in(@user)
+    if @user && @user.valid_password?(user_params[:password])
+      sign_in(@user)
       # sign_in(@user)
       # flash[:success] = '登录成功'
       # redirect_to blogs_path
