@@ -1,0 +1,14 @@
+zh-CN:
+  activerecord:
+    models:
+      plate_number: "车牌信息"
+    attributes:
+      user:
+        id: "ID"
+        number: "车牌号码"
+
+  enums:
+    user:
+      role:
+        nomal: "普通用户"
+        admin: "超级管理员"

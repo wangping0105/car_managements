@@ -1,0 +1,41 @@
+<div class="container">
+  <hr>
+
+  <div>
+    <h4><%= current_cell.name %>车辆信息：</h4>
+    <form action="<%= root_path %>">
+      <div class="col-md-4">
+        <%= text_field_tag :query, params[:query], placeholder: '输入车牌号', class: 'form-control' %>
+      </div>
+
+      <div class="col-md-4">
+        <%=submit_tag '查找', class: 'btn-default btn' %>
+        <%=link_to '新增车牌信息', new_plate_numbers_path, class: 'btn-primary btn' %>
+      </div>
+
+    </form>
+    <table class="table table-striped table-overflow">
+      <thead>
+      <tr>
+        <th>车牌号</th>
+        <th>电话,姓名,地址</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @plant_numbers.each_with_index do |plant_number, i| %>
+      <% _contact = @result.detect{|c| c.first == plant_number.contact_id} %>
+        <tr>
+          <td><%= plant_number.number %></td>
+          <td>
+            <%= _contact[2] %> <%= _contact[1] %><br>
+            <%= _contact[3] %>
+          </td>
+
+        </tr>
+      <%end %>
+      </tbody>
+    </table>
+    <%= paginate @plant_numbers%>
+  </div>
+</div>
+</div>

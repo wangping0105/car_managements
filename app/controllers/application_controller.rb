@@ -6,15 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   include ApplicationHelper
 
-  def current_store
-    if current_user.present?
-      @current_user ||= current_user.store
-    else
-      render 'no_auth.html'
-      return
-    end
-  end
-
   def redirect_back_or(default)
     redirect_to (cookies[:return_to] || default)
     cookies.delete(:return_to)

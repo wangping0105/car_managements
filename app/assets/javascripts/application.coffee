@@ -8,6 +8,7 @@
 #= require jquery.validate.localization/messages_zh
 #= require jquery.validate.custom
 #= require typeahead.bundle
+#= require bootstrap/js/bootstrap.min
 #= require turbolinks
 #= require_tree .
 

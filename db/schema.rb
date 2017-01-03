@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208085613) do
+ActiveRecord::Schema.define(version: 20170103023807) do
 
   create_table "addresses", force: :cascade do |t|
     t.float    "lat",              limit: 24
@@ -78,6 +78,41 @@ ActiveRecord::Schema.define(version: 20161208085613) do
   add_index "attachments", ["qiniu_persistent_id"], name: "index_attachments_on_qiniu_persistent_id", using: :btree
   add_index "attachments", ["user_id"], name: "index_attachments_on_user_id", using: :btree
 
+  create_table "cars", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "cell_contacts", force: :cascade do |t|
+    t.integer  "contact_id",   limit: 4
+    t.integer  "cell_id",      limit: 4
+    t.string   "building_no",  limit: 255
+    t.string   "room_no",      limit: 255
+    t.string   "cell_address", limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "cell_contacts", ["building_no"], name: "index_cell_contacts_on_building_no", using: :btree
+  add_index "cell_contacts", ["cell_id"], name: "index_cell_contacts_on_cell_id", using: :btree
+  add_index "cell_contacts", ["contact_id"], name: "index_cell_contacts_on_contact_id", using: :btree
+  add_index "cell_contacts", ["room_no"], name: "index_cell_contacts_on_room_no", using: :btree
+
+  create_table "cells", force: :cascade do |t|
+    t.integer  "user_id",            limit: 4
+    t.integer  "status",             limit: 4,   default: 0
+    t.string   "number",             limit: 255
+    t.string   "name",               limit: 255
+    t.integer  "cell_contact_count", limit: 4,   default: 0
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "cells", ["number"], name: "index_cells_on_number", using: :btree
+  add_index "cells", ["status"], name: "index_cells_on_status", using: :btree
+  add_index "cells", ["user_id"], name: "index_cells_on_user_id", using: :btree
+
   create_table "cities", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "pinyin",      limit: 255
@@ -90,6 +125,16 @@ ActiveRecord::Schema.define(version: 20161208085613) do
   add_index "cities", ["name"], name: "index_cities_on_name", using: :btree
   add_index "cities", ["pinyin"], name: "index_cities_on_pinyin", using: :btree
   add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name",               limit: 255
+    t.string   "phone",              limit: 255
+    t.integer  "plate_number_count", limit: 4,   default: 0
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "contacts", ["phone"], name: "index_contacts_on_phone", using: :btree
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -114,6 +159,18 @@ ActiveRecord::Schema.define(version: 20161208085613) do
   add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
   add_index "districts", ["name"], name: "index_districts_on_name", using: :btree
   add_index "districts", ["pinyin"], name: "index_districts_on_pinyin", using: :btree
+
+  create_table "plate_numbers", force: :cascade do |t|
+    t.string   "number",     limit: 255
+    t.integer  "car_id",     limit: 4
+    t.integer  "contact_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "plate_numbers", ["car_id"], name: "index_plate_numbers_on_car_id", using: :btree
+  add_index "plate_numbers", ["contact_id"], name: "index_plate_numbers_on_contact_id", using: :btree
+  add_index "plate_numbers", ["number"], name: "index_plate_numbers_on_number", using: :btree
 
   create_table "provinces", force: :cascade do |t|
     t.string   "name",       limit: 255

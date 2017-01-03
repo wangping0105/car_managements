@@ -1,0 +1,138 @@
+<div class="container">
+  <hr>
+
+  <div class= 'col-md-12'>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h3>新增车辆信息</h3>
+      </li>
+      <li class="list-group-item">
+        <div class="col-md-12">
+          <%= form_for PlateNumber.new, html: {class: ""} do|f| %>
+            <%= hidden_field_tag :cell_id, current_cell.id %>
+            <div class= 'col-md-3'>
+              <%=text_field_tag :number, "浙",class:"form-control", placeholder: "输入车牌号", required:true %>
+            </div>
+
+            <div class= 'col-md-3'>
+              <%=text_field_tag :phone, nil, class:"form-control", placeholder: "输入手机", required:true %>
+            </div>
+
+            <div class= 'col-md-3'>
+              <%=text_field_tag :name, nil, class:"form-control", placeholder: "输入姓名" %>
+            </div>
+
+            <div class= 'col-md-3'>
+              <%=text_field_tag :cell_address, "#{@current_cell.number}.XX.XX", class:"form-control", placeholder: "输入地址", required:true %>
+            </div>
+
+            <div class= 'col-md-12'>
+              <%=f.button '保存', class:"btn-primary btn submit" %>
+              <%=link_to '返回首页', root_path, class:"btn-primary btn" %>
+            </div>
+          <%end  %>
+        </div>
+        <hr>
+      </li>
+    </ul>
+
+    <div>
+      <h4>车辆信息列表：</h4>
+      <table class="table table-striped table-overflow">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>车牌号</th>
+          <th>电话</th>
+          <th>姓名</th>
+          <th>地址</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @plant_numbers.each_with_index do |plant_number, i| %>
+          <% _contact = @result.detect{|c| c.first == plant_number.contact_id} %>
+          <tr>
+            <td><%= i+1 %></td>
+            <td><%= plant_number.number %></td>
+            <td><%= _contact[2] %></td>
+            <td><%= _contact[1] %></td>
+            <td><%= _contact[3] %></td>
+          </tr>
+        <%end %>
+        </tbody>
+      </table>
+      <%= paginate @plant_numbers%>
+    </div>
+  </div>
+</div>
+
+<script>
+  <%= content_for :js_in_footer do%>
+  <%= javascript_tag do %>
+  var flag = true;
+  $("#phone").on("change", function(){
+    if(flag) {
+      flag = false;
+
+      $.ajax({
+        url: "/api/contacts",
+        type: "get",
+        data: {phone: $(this).val()},
+        dataType: "json",
+        success: function (data) {
+          if (data.code == 0) {
+            var _data = data.data
+            $("#name").val(_data.name);
+            $("#cell_address").val(_data.cell_address);
+            $("#name").attr("readonly", true)
+            $("#cell_address").attr("readonly", true)
+          }else{
+            $("#name").val("");
+            $("#cell_address").val("");
+            $("#name").removeAttr("readonly")
+            $("#cell_address").removeAttr("readonly")
+          }
+        },
+        error: function () {
+          handleMessage("请求失败!")
+        },
+        complete: function () {
+          flag = true
+        }
+      })
+    }
+  })
+
+  $(".submit").on("click", function(e){
+    e.preventDefault(); // 移除掉原生的submit处理
+    var _form = $(this).parents("form")[0]
+    var url =  $(_form).attr("action")
+    var type =  $(_form).attr("method")
+    var _this = this
+    if(!$(_form).valid()){
+      return;
+    }
+    $(_this).attr("disabled", true) //防止重复提交
+
+    $.ajax({
+      url: url,
+      type: type,
+      data: $(_form).serialize(),
+      dataType: "json",
+      success: function(data){
+        handleMessage(data.msg)
+        if(data.code == 0){
+          location.href = data.url
+        }
+      },
+      error: function(){
+        handleMessage("请求失败!")
+      },
+      complete: function(){
+        $(_this).removeAttr("disabled")
+      }
+    })
+  });
+  <%end%>
+  <%end%>
+</script>

@@ -7,10 +7,12 @@ end
 Rails.application.routes.draw do
   draw :api
   devise_for :users, controllers: {
-     sessions: 'users/sessions',
-     registrations: 'users/registrations'
-   }
-   root "home#index"
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
-   resource :home
+  resource :home
+  resource :plate_numbers
+
+  root "plate_numbers#index"
 end

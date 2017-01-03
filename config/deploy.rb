@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
 lock '>=3.4.0'
 
-set :application, 'magic_novel'
-set :repo_url, 'git@github.com:wangping0105/magic_novel.git'
+set :application, 'car_managements'
+set :repo_url, 'git@github.com:wangping0105/car_managements.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

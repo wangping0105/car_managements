@@ -1,0 +1,2 @@
+module PlateNumbersHelper
+end
