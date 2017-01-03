@@ -22,7 +22,7 @@ class PlateNumbersController < ApplicationController
         @contact = Contact.create(name: params[:name], phone: params[:phone])
         @cell_contact = @contact.cell_contacts.create(cell_id: params[:cell_id], cell_address: params[:cell_address])
       end
-binding.pry
+
       @pn = PlateNumber.new(number: params[:number], contact: @contact)
       if @pn.save
         car_name =  "车#{params[:number]}#{params[:phone]}"
