@@ -34,7 +34,7 @@ set :repo_url, 'git@github.com:wangping0105/car_managements.git'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 set :linked_files, fetch(:linked_files, []).push(*%W{
-  config/nginx.conf config/unicorn/production.rb config/database.yml config/secrets.yml config/cross_sites.yml
+  config/nginx.conf config/unicorn/production.rb config/database.yml config/secrets.yml
 })
 
 
@@ -42,7 +42,7 @@ set :linked_files, fetch(:linked_files, []).push(*%W{
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :linked_dirs, fetch(:linked_dirs, []).push(*%W{
   config/unicorn log tmp/pids tmp/cache tmp/sockets public/www
-  vendor/bundle public/system public/books public/zhuangbbq public/assets/kindeditor
+  vendor/bundle public/system
 })
 
 set :unicorn_rack_env, -> { fetch(:rails_env) || "deployment" }
