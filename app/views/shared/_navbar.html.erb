@@ -14,6 +14,7 @@
         <li class="<%= nav_bar_active("plate_numbhers", "index") %>" >
           <%=link_to '首页', root_path ,class: 'all_orders' %>
         </li>
+        <li><%= link_to '退出', destroy_user_session_path, method: :delete %></li>
         <% if current_user.admin? %>
         <%end %>
       </ul>

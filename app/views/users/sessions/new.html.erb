@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <%= form_for(@user, url: user_session_path , html:{class: "form-signin"}, method: "post") do |f|%>
       <div class="col-md-12">
-      <h2 class="form-signin-heading">XX系统</h2>
+      <h2 class="form-signin-heading">车辆管理系统</h2>
       </div>
 
       <div class="col-md-12">
@@ -20,7 +20,6 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="login">登录</button>
       </div>
       <div class="col-md-6">
-        <%=link_to '注册', "", class:'btn btn-lg btn-primary btn-block'%>
       </div>
     <%end %>
   </div>

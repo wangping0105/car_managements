@@ -8,8 +8,8 @@
         <%= text_field_tag :query, params[:query], placeholder: '输入车牌号', class: 'form-control' %>
       </div>
 
-      <div class="col-md-4">
-        <%=submit_tag '查找', class: 'btn-default btn' %>
+      <div class="col-md-4 margint-5px">
+        <%=submit_tag '查找车牌信息', class: 'btn-default btn' %>
         <%=link_to '新增车牌信息', new_plate_numbers_path, class: 'btn-primary btn' %>
       </div>
 
