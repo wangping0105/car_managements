@@ -1,8 +1,11 @@
 class Api::V1::BaseController < ActionController::Base
   include Api::Rescueable
+  include Api::Authenticateable
+  include Api::DeviceDetectable
 
   helper_method :current_user
-  before_action :authenticate!
+  helper_method :version_code
+  before_action :authenticate_referer!, :authenticate_app!, :authenticate!
 
   respond_to :json
 

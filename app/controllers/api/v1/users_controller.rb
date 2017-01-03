@@ -1,4 +1,4 @@
-class Api::V1::Users::UsersController < Api::V1::BaseController
+class Api::V1::UsersController < Api::V1::BaseController
   include Api::V1::AttachmentHelper
   before_action :set_user, only:[ :show]
 

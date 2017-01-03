@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     self.name_pinyin = PinYin.of_string(self.name).join('').first(255)
   end
 
-  after_create do
+  after_save do
     ApiKey.create(user: self)
   end
 

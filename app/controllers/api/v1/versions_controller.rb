@@ -1,4 +1,4 @@
-class Api::V1::Users::VersionsController < Api::V1::BaseController
+class Api::V1::VersionsController < Api::V1::BaseController
   skip_before_action :authenticate!
 
   def lastest_version
