@@ -1,5 +1,7 @@
 class Cell < ActiveRecord::Base
-  belongs_to :user
+  has_many :user_cells
+  has_many :users, through: :user_cells
+  belongs_to :owner, class_name: "User", foreign_key: :user_id
 
   has_many :cell_contacts
   has_many :contacts, through: :cell_contacts

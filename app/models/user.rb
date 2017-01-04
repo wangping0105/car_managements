@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   # has_secure_password
   has_one :api_key
   has_one :attachment, as: :attachmentable
-  has_many :cells
+  has_one :user_cell
+  has_one :cell, through: :user_cell
 
   validates_uniqueness_of :phone, conditions: -> { paranoia_scope }
   # validates_presence_of :password, :message => "密码不能为空!"

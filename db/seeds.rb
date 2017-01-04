@@ -6,5 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-u = User.create(name: "admin", password: "111111", phone: 15921076830, role: 1)
 cell = Cell.create(number: "mczy226", user: u, name: '明辰紫月226弄')
+user = cell.users.create(phone: 15921076830, name: "admin", password: "111111",  role: 1)
+user = cell.users.create(phone: 15002162311, name: "媳妇", password: "111111",  role: 1)

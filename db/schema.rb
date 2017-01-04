@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103023807) do
+ActiveRecord::Schema.define(version: 20170104032457) do
 
   create_table "addresses", force: :cascade do |t|
     t.float    "lat",              limit: 24
@@ -197,6 +197,13 @@ ActiveRecord::Schema.define(version: 20170103023807) do
   add_index "sms_codes", ["phone", "sms_type"], name: "index_sms_codes_on_phone_and_sms_type", using: :btree
   add_index "sms_codes", ["phone"], name: "index_sms_codes_on_phone", using: :btree
   add_index "sms_codes", ["users_id"], name: "index_sms_codes_on_users_id", using: :btree
+
+  create_table "user_cells", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "cell_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "user_devices", force: :cascade do |t|
     t.string   "uid",          limit: 255

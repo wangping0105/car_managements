@@ -11,6 +11,6 @@ module ApplicationHelper
   end
 
   def current_cell
-    @current_cell ||= (current_user.cells.selected.first || current_user.cells.first)
+    @current_cell ||= current_user.cell
   end
 end
