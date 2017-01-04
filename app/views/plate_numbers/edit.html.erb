@@ -15,15 +15,15 @@
             </div>
 
             <div class= 'col-md-3'>
-              <%=text_field_tag :phone, @result[1], class:"form-control", placeholder: "输入手机" %>
+              <%=text_field_tag :phone, @result.phone, class:"form-control", placeholder: "输入手机" %>
             </div>
 
             <div class= 'col-md-3'>
-              <%=text_field_tag :name, @result[0], class:"form-control", placeholder: "输入姓名" %>
+              <%=text_field_tag :name, @result.name, class:"form-control", placeholder: "输入姓名" %>
             </div>
 
             <div class= 'col-md-3'>
-              <%=text_field_tag :cell_address, @result[2], class:"form-control", placeholder: "输入地址", required:true %>
+              <%=text_field_tag :cell_address, @result.cell_address, class:"form-control", placeholder: "输入地址", required:true %>
             </div>
 
             <div class= 'col-md-12'>
