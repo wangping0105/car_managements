@@ -1,0 +1,77 @@
+<div class="container">
+  <hr>
+
+  <div class= 'col-md-12'>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h3>修改车辆信息</h3>
+      </li>
+      <li class="list-group-item">
+        <div class="col-md-12">
+          <%= form_for @plant_number, html: {class: ""} do|f| %>
+            <%= hidden_field_tag :cell_id, current_cell.id %>
+            <div class= 'col-md-3'>
+              <%=text_field_tag :number, @plant_number.number, readonly:true, class:"form-control", placeholder: "输入车牌号", required:true %>
+            </div>
+
+            <div class= 'col-md-3'>
+              <%=text_field_tag :phone, @result[1], class:"form-control", placeholder: "输入手机" %>
+            </div>
+
+            <div class= 'col-md-3'>
+              <%=text_field_tag :name, @result[0], class:"form-control", placeholder: "输入姓名" %>
+            </div>
+
+            <div class= 'col-md-3'>
+              <%=text_field_tag :cell_address, @result[2], class:"form-control", placeholder: "输入地址", required:true %>
+            </div>
+
+            <div class= 'col-md-12'>
+              <%=f.button '保存', class:"btn-primary btn submit" %>
+              <%=link_to '返回首页', root_path, class:"btn-primary btn" %>
+            </div>
+          <%end  %>
+        </div>
+        <div>-----</div>
+      </li>
+    </ul>
+  </div>
+</div>
+<script>
+  <%= content_for :js_in_footer do%>
+  <%= javascript_tag do %>
+  var flag = true;
+
+  $(".submit").on("click", function(e){
+    e.preventDefault(); // 移除掉原生的submit处理
+    var _form = $(this).parents("form")[0]
+    var url =  $(_form).attr("action")
+    var type =  $(_form).attr("method")
+    var _this = this
+    if(!$(_form).valid()){
+      return;
+    }
+    $(_this).attr("disabled", true) //防止重复提交
+
+    $.ajax({
+      url: url,
+      type: type,
+      data: $(_form).serialize(),
+      dataType: "json",
+      success: function(data){
+        handleMessage(data.msg)
+        if(data.code == 0){
+          location.href = data.url
+        }
+      },
+      error: function(){
+        handleMessage("请求失败!")
+      },
+      complete: function(){
+        $(_this).removeAttr("disabled")
+      }
+    })
+  });
+  <%end%>
+  <%end%>
+</script>

@@ -10,7 +10,7 @@
 
       <div class="col-md-4 margint-5px">
         <%=submit_tag '查找车牌信息', class: 'btn-default btn' %>
-        <%=link_to '新增车牌信息', new_plate_numbers_path, class: 'btn-primary btn' %>
+        <%=link_to '新增车牌信息', new_plate_number_path, class: 'btn-primary btn' %>
       </div>
 
     </form>
@@ -19,6 +19,7 @@
       <tr>
         <th>车牌号</th>
         <th>电话,姓名,地址</th>
+        <th>操作</th>
       </tr>
       </thead>
       <tbody>
@@ -27,10 +28,10 @@
         <tr>
           <td><%= plant_number.number %></td>
           <td>
-            <%= _contact[2] %> <%= _contact[1] %><br>
-            <%= _contact[3] %>
+            <%= _contact[2] %><br>
+            <%= _contact[1] %> <%= _contact[3] %>
           </td>
-
+          <td><%= link_to '编辑', edit_plate_number_path(plant_number), class: 'btn-primary btn' %></td>
         </tr>
       <%end %>
       </tbody>

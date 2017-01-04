@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resource :home
-  resource :plate_numbers
+  resources :home
+  resources :plate_numbers
 
   root "plate_numbers#index"
 end

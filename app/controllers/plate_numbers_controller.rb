@@ -15,6 +15,12 @@ class PlateNumbersController < ApplicationController
       pluck(:contact_id, 'contacts.name', 'contacts.phone', :cell_address)
   end
 
+  def edit
+    @plant_number = PlateNumber.find(params[:id])
+    @result =  current_cell.cell_contacts.joins(:contact).where(contact_id: @plant_number.contact_id).
+      pluck('contacts.name', 'contacts.phone', :cell_address).first
+  end
+
   def create
     PlateNumber.transaction do
       params[:phone] ||= params[:cell_address]
@@ -30,7 +36,26 @@ class PlateNumbersController < ApplicationController
         @car = Car.create(name: car_name)
         @pn.update(car: @car)
 
-        render json: { code: 0, msg: "保存成功", url: new_plate_numbers_path}
+        render json: { code: 0, msg: "保存成功", url: new_plate_number_path}
+      else
+        render json: { code: -1, msg: "保存失败, #{@pn.errors.full_messages.join(",")}"}
+
+      end
+    end
+  end
+
+  def update
+    PlateNumber.transaction do
+      @pn = PlateNumber.find(params[:id])
+      params[:phone] ||= params[:cell_address]
+      @contact = @pn.contact
+      @cell_contact = @contact.cell_contacts.find_by(cell_id: current_cell.id)
+      if @contact.update(name: params[:name], phone: params[:phone]) && @cell_contact
+        @cell_contact.update(cell_address: params[:cell_address])
+      end
+
+      if @pn.update(number: params[:number])
+        render json: { code: 0, msg: "保存成功", url: plate_numbers_path}
       else
         render json: { code: -1, msg: "保存失败, #{@pn.errors.full_messages.join(",")}"}
 
