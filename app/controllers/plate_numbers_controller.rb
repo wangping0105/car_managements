@@ -17,6 +17,7 @@ class PlateNumbersController < ApplicationController
 
   def create
     PlateNumber.transaction do
+      params[:phone] ||= params[:cell_address]
       @contact = Contact.find_by(phone: params[:phone])
       unless @contact.present?
         @contact = Contact.create(name: params[:name], phone: params[:phone])

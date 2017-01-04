@@ -15,7 +15,7 @@
             </div>
 
             <div class= 'col-md-3'>
-              <%=text_field_tag :phone, nil, class:"form-control", placeholder: "输入手机", required:true %>
+              <%=text_field_tag :phone, nil, class:"form-control", placeholder: "输入手机" %>
             </div>
 
             <div class= 'col-md-3'>
@@ -23,7 +23,7 @@
             </div>
 
             <div class= 'col-md-3'>
-              <%=text_field_tag :cell_address, "#{@current_cell.number}.XX.XX", class:"form-control", placeholder: "输入地址", required:true %>
+              <%=text_field_tag :cell_address, "226.", class:"form-control", placeholder: "输入地址", required:true %>
             </div>
 
             <div class= 'col-md-12'>
@@ -88,7 +88,7 @@
             $("#cell_address").attr("readonly", true)
           }else{
             $("#name").val("");
-            $("#cell_address").val("");
+            $("#cell_address").val("226.");
             $("#name").removeAttr("readonly")
             $("#cell_address").removeAttr("readonly")
           }
